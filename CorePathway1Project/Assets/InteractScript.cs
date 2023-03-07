@@ -6,49 +6,59 @@ public class InteractScript : MonoBehaviour
 {
     public GameObject hand;
 
-    GameObject itemPickup;
+    GameObject objectIntract;
     bool canPickup = false;
+    bool canInteract = false;
     [HideInInspector]public bool hasItem = false;
 
     void Update()
     {
-        if (canPickup)
-        {
-            if (Input.GetKeyDown("e"))
-            {
-                if (!hasItem)
-                {
-                    pickUpItem(itemPickup);
-                }
-                else
-                {
-                    dropItem(itemPickup);
-                }
-            }
-
-        }
+        manageInteractions();
     }
 
     void OnTriggerStay(Collider item)
     {
         if (!hasItem)
         {
-            if(item.gameObject.tag == "Item")
+            objectIntract = item.gameObject;
+            if (item.gameObject.tag == "Item")
             {
                 canPickup = true;
-                itemPickup = item.gameObject;
             }
-            else if(item.gameObject.tag == "button")
+            else if(item.gameObject.tag == "Button")
             {
-
+                canInteract = true;
             }
-                
+         
         }
     }
 
     void OnTriggerExit(Collider item)
     {
         if (!hasItem) { canPickup = false; }
+        canInteract = false;
+    }
+
+    public void manageInteractions()
+    {
+        if (Input.GetKeyDown("e"))
+        {
+            if (canPickup)
+            {
+                if (!hasItem)
+                {
+                    pickUpItem(objectIntract);
+                }
+                else
+                {
+                    dropItem(objectIntract);
+                }
+            }
+            else if (canInteract && !hasItem)
+            {
+                objectIntract.GetComponent<ButtonScript>().pressButton();
+            }
+        }
     }
 
     public void dropItem(GameObject item)

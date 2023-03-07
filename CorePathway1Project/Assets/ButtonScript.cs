@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
+    public bool toggle;
+    private bool isPressed = false;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool returnState()//returns if pressed or not
     {
-        
+        return isPressed;
+    }
+
+    private void Update()
+    {
+        if(!toggle && isPressed)
+        {
+            isPressed = false;
+        }
+    }
+
+    public void pressButton()//switch the button press
+    {
+        isPressed = !isPressed;
+        player.GetComponent<PlayerMovement>().die();
     }
 }

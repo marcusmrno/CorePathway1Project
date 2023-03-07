@@ -72,6 +72,24 @@ public class PlayerMovement : MonoBehaviour
         gravityVelocity.y -= gravity * Time.deltaTime;
 
         controller.Move(gravityVelocity * Time.deltaTime);
+    }
 
+    private Vector3 spawnPoint;
+    public void setSpawnPoint(Vector3 point)
+    {
+        spawnPoint = point;
+    }
+
+    public void die()//lmao die!
+    {
+        speed = 1f;
+        sens = 0.5f;
+    }
+
+    public void respawn()
+    {
+        speed = 6f;
+        sens = 2f;
+        transform.position = spawnPoint;
     }
 }
