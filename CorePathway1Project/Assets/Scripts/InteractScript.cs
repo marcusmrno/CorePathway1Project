@@ -54,7 +54,7 @@ public class InteractScript : MonoBehaviour
                 }
                 else
                 {
-                    dropItem(objectIntract);
+                    dropItem();
                 }
             }
             else if (canInteract && !hasItem)
@@ -64,10 +64,10 @@ public class InteractScript : MonoBehaviour
         }
     }
 
-    public void dropItem(GameObject item)
+    public void dropItem()
     {
-        item.GetComponent<Rigidbody>().isKinematic = false;
-        item.transform.parent = null;
+        objectIntract.GetComponent<Rigidbody>().isKinematic = false;
+        objectIntract.transform.parent = null;
         hasItem = false;
     }
 

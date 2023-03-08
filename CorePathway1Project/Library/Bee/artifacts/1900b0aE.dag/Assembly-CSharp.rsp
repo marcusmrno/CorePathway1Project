@@ -356,11 +356,14 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/ButtonScript.cs"
+"Assets/Scripts/CoolSpinner.cs"
 "Assets/Scripts/InteractScript.cs"
 "Assets/Scripts/KillPlateScript.cs"
 "Assets/Scripts/MovingObjectScript.cs"
 "Assets/Scripts/PlateScript.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/PuzzleScript.cs"
+"Assets/Scripts/SpawnSetter.cs"
 -langversion:9.0
 
 /deterministic

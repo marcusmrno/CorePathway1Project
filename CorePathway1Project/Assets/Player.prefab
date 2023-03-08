@@ -95,11 +95,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2943331040319836639}
   - component: {fileID: 2943331040319836637}
-  - component: {fileID: 2943331040319836638}
   - component: {fileID: 6588629150366743146}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,20 +139,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &2943331040319836638
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2943331040319836608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6588629150366743146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +161,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
+  spawnPoint: {fileID: 0}
+  GrabBox: {fileID: 2943331041937764608}
 --- !u!1 &2943331041194804871
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2943331041194804871}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.393, z: 1}
+  m_LocalPosition: {x: 0, y: -0.10595202, z: 1.0000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,8 +349,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2943331041937764608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.053000152, z: -0.086298}
-  m_LocalScale: {x: 1, y: 1.2954999, z: 1.4916899}
+  m_LocalPosition: {x: 0, y: -0.034072, z: -0.086298}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2943331041194804870}
@@ -381,8 +368,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.70694774, z: 1.757032}
-  m_Center: {x: 0, y: -0.14652607, z: 0.88341254}
+  m_Size: {x: 1, y: 1.532948, z: 2.9307806}
+  m_Center: {x: 0, y: -0.55952644, z: 1.470287}
 --- !u!114 &7270873775270798547
 MonoBehaviour:
   m_ObjectHideFlags: 0

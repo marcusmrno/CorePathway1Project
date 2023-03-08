@@ -9,7 +9,8 @@ public class MovingObjectScript : MonoBehaviour
 	public GameObject endPoint;
     public bool singleUse;
 	public float travelTime = 10;
-    public bool isMoving;//can be set to true at the start to have an object move from the start
+    public bool startMoving;//
+    private bool isMoving;
     public bool isReverse;//start from endpoint then go to start
     private GameObject platform;
 	private Rigidbody rb;
@@ -18,23 +19,25 @@ public class MovingObjectScript : MonoBehaviour
 
 	private void Start()
 	{
-        platform = transform.GetChild(0).gameObject;
+        platform = transform.GetChild(2).gameObject;
 		rb = platform.GetComponent<Rigidbody>();
         startPoint.transform.position = platform.transform.position;
 	}
 
-    bool toggle;//to sync movement with plate-style triggers
+    bool state;//to sync movement with plate-style triggers
     public void toggleMove()
     {
-        if(trigger.tag == "Button" && trigger.GetComponent<ButtonScript>().returnState()){
-            isMoving = !isMoving;
+        if(trigger.tag == "Button"){
+            state = trigger.GetComponent<ButtonScript>().returnState();
         }
         if(trigger.tag == "Plate"){
-            if(trigger.GetComponent<PlateScript>().getOnPlate() != toggle){//so it will stop moving when object is removed
-                toggle = trigger.GetComponent<PlateScript>().getOnPlate();
-                isMoving = !isMoving;
-            }
+            state = trigger.GetComponent<PlateScript>().getOnPlate();
         }
+        if(trigger.tag == "Puzzle"){
+            state = trigger.GetComponent<PuzzleScript>().getSolved();
+        }
+
+        isMoving = !(state == startMoving);
     }
 
 	void Update()

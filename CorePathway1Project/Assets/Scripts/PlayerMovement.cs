@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
         characterMovement();
         cameraControl();
         manageGravity();
+        respawn();
     }
     
     public float speed = 6f;
@@ -74,22 +75,40 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(gravityVelocity * Time.deltaTime);
     }
 
-    private Vector3 spawnPoint;
-    public void setSpawnPoint(Vector3 point)
+    public GameObject spawnPoint;
+    public GameObject GrabBox;
+    public void setSpawnPoint(GameObject point)
     {
         spawnPoint = point;
     }
 
+    bool dead;
+   
     public void die()//lmao die!
     {
-        speed = 1f;
-        sens = 0.5f;
+        if(!dead){
+            speed = 1f;
+            sens = 0.5f;
+            dead = true;
+        }
+
     }
 
+     float deathTimer = 0;
     public void respawn()
     {
-        speed = 6f;
-        sens = 2f;
-        transform.position = spawnPoint;
+        if(dead){
+            deathTimer += Time.deltaTime;
+            if((int)deathTimer == 2){
+                GrabBox.GetComponent<InteractScript>().dropItem();//forces you to drop what u have
+                transform.position = spawnPoint.transform.position;
+                speed = 6f;
+                sens = 2f;
+            }
+            if((int)deathTimer == 3){
+                dead = false;
+                deathTimer = 0;
+            }            
+        }
     }
 }
