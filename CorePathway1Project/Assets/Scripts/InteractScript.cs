@@ -73,9 +73,13 @@ public class InteractScript : MonoBehaviour
 
     public void pickUpItem(GameObject item)
     {
-        item.GetComponent<Rigidbody>().isKinematic = true;
-        item.transform.position = hand.transform.position;
-        item.transform.parent = hand.transform;
-        hasItem = true;
+        if(item.tag == "Item")
+        {
+            item.GetComponent<Rigidbody>().isKinematic = true;
+            item.transform.position = hand.transform.position;
+            item.transform.parent = hand.transform;
+            hasItem = true;
+        }
+        
     }
 }
